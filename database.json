@@ -30,6 +30,13 @@
       "tipo": "NOT",
       "serial": "03255",
       "status": "Disponível"
+    },
+    {
+      "id": "NOT04",
+      "nome": "Positivo",
+      "tipo": "NOT",
+      "serial": "1256",
+      "status": "Disponível"
     }
   ],
   "usuarios": [
