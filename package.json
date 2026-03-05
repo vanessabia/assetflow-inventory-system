@@ -1,0 +1,12 @@
+{
+  "name": "assetflow-inventory-system",
+  "version": "1.0.0",
+  "description": "Sistema de inventário com mini banco JSON",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

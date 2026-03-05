@@ -1,0 +1,55 @@
+{
+  "equipamentos": [
+    {
+      "id": "NOT02",
+      "nome": "Dell",
+      "tipo": "NOT",
+      "serial": "56322",
+      "status": "Em uso",
+      "funcionario": "Luan"
+    },
+    {
+      "id": "MON01",
+      "nome": "Lenovo",
+      "tipo": "MON",
+      "serial": "4512",
+      "status": "Em uso",
+      "funcionario": "Vivian"
+    },
+    {
+      "id": "NOT03",
+      "nome": "Acer",
+      "tipo": "NOT",
+      "serial": "123654",
+      "status": "Em uso",
+      "funcionario": "Ana"
+    },
+    {
+      "id": "NOT03",
+      "nome": "Macbook",
+      "tipo": "NOT",
+      "serial": "03255",
+      "status": "Disponível"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "FUNC01",
+      "nome": "Ana",
+      "setor": "RH",
+      "equipamentoId": "NOT03"
+    },
+    {
+      "id": "FUNC02",
+      "nome": "Vivian",
+      "setor": "TI",
+      "equipamentoId": "MON01"
+    },
+    {
+      "id": "FUNC03",
+      "nome": "Luan",
+      "setor": "Financeiro",
+      "equipamentoId": "NOT02"
+    }
+  ]
+}
