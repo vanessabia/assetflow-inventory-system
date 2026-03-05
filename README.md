@@ -17,7 +17,7 @@ Em pequenas organizações, o controle de equipamentos frequentemente é realiza
 * Dificuldade em auditoria interna
 * Desorganização no controle de status
 
-O AssetFlow simula uma solução digital simples e organizada para esse cenário, utilizando apenas tecnologias front-end.
+O AssetFlow simula uma solução digital simples e organizada para esse cenário, utilizando uma aplicação web com front-end em JavaScript e um servidor Node.js com Express para gerenciamento e persistência de dados.
 
 ---
 
@@ -33,7 +33,7 @@ Desenvolver uma aplicação web que permita:
 * Buscar equipamentos com filtros dinâmicos
 * Exibir estatísticas em dashboard
 
-O sistema será totalmente front-end, utilizando armazenamento local via LocalStorage.
+O sistema utiliza um servidor Node.js com Express para gerenciamento de dados e persistência em arquivo JSON, simulando um banco de dados simples.
 
 ---
 
@@ -51,9 +51,54 @@ O sistema será totalmente front-end, utilizando armazenamento local via LocalSt
 * HTML5
 * CSS3
 * JavaScript (ES6+)
-* LocalStorage
+* Node.js
+* Express.js
+* JSON (persistência de dados)
 * Chart.js
 * Git & GitHub
+
+---
+
+## ▶ Como Executar o Projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/vanessabia/assetflow-inventory-system.git
+```
+
+### 2. Acessar a pasta do projeto
+
+```bash
+cd assetflow-inventory-system
+```
+
+### 3. Instalar as dependências
+
+```bash
+npm install
+```
+
+### 4. Iniciar o servidor
+
+```bash
+node server.js
+```
+
+### 5. Acessar no navegador
+
+Após iniciar o servidor, abra no navegador:
+
+http://localhost:5500
+
+O sistema estará disponível com as seguintes funcionalidades:
+
+- Cadastro e gerenciamento de equipamentos
+- Cadastro de funcionários
+- Atribuição de equipamentos a funcionários
+- Atualização automática do status dos equipamentos
+- Busca e filtros para localização de ativos
+- Dashboard com estatísticas do inventário
 
 ---
 
@@ -62,18 +107,24 @@ O sistema será totalmente front-end, utilizando armazenamento local via LocalSt
 ```bash
 AssetFlow/
 │
-├── index.html
+├── server.js
+├── database.json
+├── package.json
 │
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── data.js
-│   ├── equipamentos.js
-│   ├── funcionarios.js
-│   ├── filtros.js
-│   ├── dashboard.js
-│   └── main.js
+├── public/
+│   ├── html/
+│   │   ├── index.html
+│   │   ├── equipamentos.html
+│   │   └── funcionarios.html
+│   │
+│   ├── css/
+│   │   └── style.css
+│   │
+│   └── js/
+│       ├── equipamentos.js
+│       ├── funcionarios.js
+│       ├── filtros.js
+│       └── dashboard.js
 │
 └── README.md
 ```
@@ -82,12 +133,12 @@ AssetFlow/
 
 ## 📌 Descrição dos Arquivos
 
-* `data.js` → Funções de acesso e persistência no LocalStorage
+* `server.js` → Servidor Node.js com Express responsável pela API e gerenciamento dos dados
+* `database.json` → Arquivo utilizado para persistência dos dados da aplicação
 * `equipamentos.js` → Cadastro, geração de código, edição e listagem
 * `funcionarios.js` → Cadastro e atribuição de equipamentos
 * `filtros.js` → Busca e filtros dinâmicos
 * `dashboard.js` → Estatísticas e integração com Chart.js
-* `main.js` → Inicialização e organização geral do sistema
 
 ---
 
@@ -128,7 +179,7 @@ Cada integrante trabalha em sua própria branch e realiza Pull Request para `mai
 ### Inclui:
 
 * Controle de inventário
-* Armazenamento local
+* Persistência de dados em arquivo JSON via servidor Node.js
 * Dashboard estatístico
 * Interface responsiva
 * Organização modular do código
@@ -137,18 +188,18 @@ Cada integrante trabalha em sua própria branch e realiza Pull Request para `mai
 
 * Sistema de login
 * Controle de permissões
-* Backend externo
-* Banco de dados real
+* Banco de dados relacional
+* Sistema completo de autenticação
 
 ---
 
 ## 👥 Organização da Equipe
 
-* Front-end & Layout: ____________________
-* Módulo de Equipamentos: ____________________
-* Módulo de Funcionários: ____________________
+* Front-end & Layout: **Samuel Marcos**
+* Módulo de Equipamentos: **Arthur**
+* Módulo de Funcionários: **Vanessa Beatriz**
 * Busca e Filtros: **Khauê Braga**
-* Dashboard & Estatísticas: ____________________
+* Dashboard & Estatísticas: **Guilherme**
 
 ---
 
