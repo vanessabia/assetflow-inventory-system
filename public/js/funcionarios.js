@@ -65,6 +65,22 @@ formFuncionario.addEventListener("submit", async (e) => {
   const equipamentoId = selectEquipamento.value;
   const editId = editIdInput.value;
 
+  // validação de funcionário duplicado
+  const funcionarios = await fetchJSON("/usuarios");
+  const nomeNormalizado = nome.toLowerCase();
+
+  const funcionarioExiste = funcionarios.some(f =>
+    f.nome.trim().toLowerCase() === nomeNormalizado &&
+    f.setor === setor &&
+    f.id !== editId
+  );
+
+  if (funcionarioExiste) {
+    alert("Já existe um funcionário com esse nome neste setor.");
+    return;
+  }
+  
+
   if (!nome) return alert("Informe o nome!");
   if (!setor) return alert("Selecione o setor!");
   if (!equipamentoId) return alert("Selecione um equipamento!");
