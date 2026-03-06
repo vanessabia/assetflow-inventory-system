@@ -17,26 +17,12 @@
       "funcionario": "Vivian"
     },
     {
-      "id": "NOT03",
-      "nome": "Acer",
-      "tipo": "NOT",
-      "serial": "123654",
-      "status": "Em uso",
-      "funcionario": "Ana"
-    },
-    {
-      "id": "NOT03",
-      "nome": "Macbook",
-      "tipo": "NOT",
-      "serial": "03255",
-      "status": "Disponível"
-    },
-    {
       "id": "NOT04",
       "nome": "Positivo",
       "tipo": "NOT",
       "serial": "1256",
-      "status": "Disponível"
+      "status": "Em uso",
+      "funcionario": "Ana"
     },
     {
       "id": "MON02",
@@ -52,6 +38,13 @@
       "tipo": "NOT",
       "serial": "12234",
       "status": "Disponível"
+    },
+    {
+      "id": "NOT06",
+      "nome": "Macbook",
+      "tipo": "NOT",
+      "serial": "44444",
+      "status": "Disponível"
     }
   ],
   "usuarios": [
@@ -59,7 +52,7 @@
       "id": "FUNC01",
       "nome": "Ana",
       "setor": "RH",
-      "equipamentoId": "NOT03"
+      "equipamentoId": null
     },
     {
       "id": "FUNC02",
@@ -78,6 +71,12 @@
       "nome": "Arthur Ferreira",
       "setor": "Financeiro",
       "equipamentoId": "MON02"
+    },
+    {
+      "id": "FUNC05",
+      "nome": "Ana",
+      "setor": "Administrativo",
+      "equipamentoId": "NOT04"
     }
   ]
 }
