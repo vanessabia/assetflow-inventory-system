@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <title>AssetFlow • Equipamentos</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
-
     <div class="page">
-
         <header class="page-header">
             <h1>📦 Equipamentos</h1>
             <p>Gerenciamento de ativos da empresa</p>
         </header>
 
-        <div class="grid">
+        <div class="search-section" style="margin-bottom: 20px; background: #eee; padding: 15px; border-radius: 8px;">
+            <h3>🔍 Pesquisar Inventário</h3>
+            <input type="text" id="search-input" placeholder="Digite nome ou código..." style="width: 70%; padding: 8px;">
+            <select id="filter-status-busca" style="padding: 8px;">
+                <option value="">Todos</option>
+                <option value="Disponível">Disponível</option>
+                <option value="Em uso">Em uso</option>
+                <option value="Manutenção">Manutenção</option>
+            </select>
+        </div>
 
+        <div class="grid">
             <!-- CARD FORM -->
             <div class="card">
-                <h2>Cadastrar Equipamento</h2>
+                <h2>📦 Cadastrar Equipamento</h2>
 
                 <form id="form-equipamento">
-
                     <div class="form-group">
-                        <label>Nome</label>
-                        <input type="text" id="nome" placeholder="MacBook Pro" required>
+                        <label>Nome do Equipamento</label>
+                        <input type="text" id="nome" placeholder="Ex: MacBook Pro" required>
                     </div>
 
                     <div class="form-group">
@@ -43,22 +48,17 @@
                         <input type="text" id="serial" placeholder="SN12345">
                     </div>
 
-                    <button class="btn-primary">
+                    <button class="btn-primary" type="submit">
                         Cadastrar Equipamento
                     </button>
-
                 </form>
             </div>
 
-
             <!-- CARD TABELA -->
-
             <div class="card">
-
                 <h2>Inventário</h2>
 
                 <table class="table">
-
                     <thead>
                         <tr>
                             <th>Código</th>
@@ -69,19 +69,12 @@
                             <th></th>
                         </tr>
                     </thead>
-
                     <tbody id="lista-equipamentos"></tbody>
-
                 </table>
-
             </div>
-
         </div>
-
     </div>
 
     <script src="../js/equipamentos.js"></script>
-
 </body>
-
 </html>

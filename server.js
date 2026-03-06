@@ -33,16 +33,29 @@ app.post('/equipamentos', (req, res) => {
     const { nome, tipo, serial } = req.body;
     const db = readDB();
 
-    const countTipo = db.equipamentos.filter(e => e.tipo === tipo).length + 1;
-    const id = `${tipo}${String(countTipo).padStart(2, '0')}`;
+    const equipamentosDoTipo = db.equipamentos.filter(e => e.tipo === tipo);
+    
+    let novoNumero = 1;
+    
+    if (equipamentosDoTipo.length > 0) {
+        const numeros = equipamentosDoTipo.map(e => parseInt(e.id.replace(tipo, '')));
+        novoNumero = Math.max(...numeros) + 1;
+    }
 
-    const novoEquipamento = { id, nome, tipo, serial, status: 'Disponível' };
-    db.equipamentos.push(novoEquipamento);
+    const id = `${tipo}${String(novoNumero).padStart(2, '0')}`;
+
+    const novoEquip = {
+        id,
+        nome,
+        tipo,
+        serial,
+        status: 'Disponível'
+    };
+
+    db.equipamentos.push(novoEquip);
     writeDB(db);
-
-    res.json(novoEquipamento);
+    res.status(201).json(novoEquip);
 });
-
 // Editar equipamento
 app.put('/equipamentos/:id', (req, res) => {
     const { id } = req.params;
@@ -92,6 +105,8 @@ app.post('/usuarios', (req, res) => {
        if (!equip) return res.status(400).json({ error: "Equipamento não existe" });
        if (equip.status !== "Disponível") {
      return res.status(400).json({ error: "Equipamento indisponível" });
+
+
 }
 
 equip.status = "Em uso";
