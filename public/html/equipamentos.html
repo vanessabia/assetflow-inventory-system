@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>AssetFlow • Equipamentos</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <div class="page">
-        <header class="page-header">
-            <h1>📦 Equipamentos</h1>
-            <p>Gerenciamento de ativos da empresa</p>
-        </header>
 
-        <div class="search-section" style="margin-bottom: 20px; background: #eee; padding: 15px; border-radius: 8px;">
-            <h3>🔍 Pesquisar Inventário</h3>
-            <input type="text" id="search-input" placeholder="Digite nome ou código..." style="width: 70%; padding: 8px;">
-            <select id="filter-status-busca" style="padding: 8px;">
-                <option value="">Todos</option>
-                <option value="Disponível">Disponível</option>
-                <option value="Em uso">Em uso</option>
-                <option value="Manutenção">Manutenção</option>
-            </select>
+        <div class="page-top">
+            <header class="page-header">
+
+                <div class="module-card">
+
+                    <div class="module-info">
+                        <h1>Equipamentos</h1>
+                        <p>Gerencie os ativos cadastrados e acompanhe o inventário.</p>
+
+                        <div class="badge-count" id="badge-count">
+                            0 ativos cadastrados
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="search-section">
+                <div class="search-box">
+                    <span class="search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="7" stroke="#999" stroke-width="2" />
+                            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="#999" stroke-width="2" />
+                        </svg>
+                    </span>
+                    <input type="text" id="search-input" placeholder="Buscar por nome ou código...">
+                </div>
+
+                <select id="filter-status-busca" class="search-select">
+                    <option value="">Todos</option>
+                    <option value="Disponível">Disponível</option>
+                    <option value="Em uso">Em uso</option>
+                    <option value="Manutenção">Manutenção</option>
+                </select>
+            </div>
         </div>
 
         <div class="grid">
             <!-- CARD FORM -->
             <div class="card">
-                <h2>📦 Cadastrar Equipamento</h2>
+                <h2>Cadastrar Equipamento</h2>
 
                 <form id="form-equipamento">
                     <div class="form-group">
@@ -77,4 +102,5 @@
 
     <script src="../js/equipamentos.js"></script>
 </body>
+
 </html>

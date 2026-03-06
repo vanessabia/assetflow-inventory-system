@@ -18,26 +18,56 @@
 
   <div class="layout">
 
-    <!-- SIDEBAR -->
     <aside class="sidebar">
 
-      <div class="logo">
-        <img src="../img/logo.png" alt="AssetFlow">
+      <!-- TOPO -->
+      <div class="sidebar-top">
+        <div class="logo">
+          <img src="../img/logo.png" alt="AssetFlow">
+        </div>
+
+        <div class="sidebar-divider"></div>
       </div>
 
+      <!-- MENU -->
       <nav class="menu">
-        <button onclick="abrirPagina('../html/dashboard.html')">
-          📊 Dashboard
+        <button onclick="abrirPagina('../html/dashboard.html', this)">
+          <svg class="menu-icon" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+          </svg>
+          Dashboard
         </button>
 
-        <button onclick="abrirPagina('../html/equipamentos.html')">
-          📦 Equipamentos
+        <button onclick="abrirPagina('../html/equipamentos.html', this)">
+          <svg class="menu-icon" viewBox="0 0 24 24">
+            <path d="M3 7h18v10H3z" />
+            <path d="M8 7V5h8v2" />
+          </svg>
+          Equipamentos
         </button>
 
-        <button onclick="abrirPagina('../html/funcionarios.html')">
-          👤 Funcionários
+        <button onclick="abrirPagina('../html/funcionarios.html', this)">
+          <svg class="menu-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+          </svg>
+          Funcionários
         </button>
       </nav>
+
+      <!-- RODAPÉ -->
+      <div class="sidebar-footer">
+        <div class="footer-user">
+          <div class="footer-avatar">A</div>
+          <div class="footer-user-info">
+            <strong>Administrador</strong>
+            <span>AssetFlow v1.0</span>
+          </div>
+        </div>
+      </div>
 
     </aside>
 
@@ -62,18 +92,27 @@
   </div>
 
   <script>
-    function abrirPagina(pagina) {
-
+    function abrirPagina(pagina, botao) {
       document.getElementById("frame-conteudo").src = pagina;
 
-      const titulo = {
+      const titulos = {
         "../html/dashboard.html": "Visão Geral",
         "../html/equipamentos.html": "Inventário de Ativos",
-        "../html/funcionarios.html": "Responsáveis pelos Ativos"
+        "../html/funcionarios.html": "Responsáveis pelos Ativos",
       };
 
-      document.getElementById("page-title").innerText = titulo[pagina];
+      document.getElementById("page-title").innerText = titulos[pagina] || "AssetFlow";
 
+      document.querySelectorAll(".menu button").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      botao.classList.add("active");
+    }
+
+    window.onload = function () {
+      const primeiroBotao = document.querySelector(".menu button");
+      abrirPagina("dashboard.html", primeiroBotao);
     }
   </script>
 

@@ -3,9 +3,18 @@ const selectEquipamento = document.getElementById("equipamento");
 const tabelaFuncionarios = document.getElementById("lista-funcionarios");
 const editIdInput = document.getElementById("edit-id");
 
+const buscaFuncionario = document.getElementById("search-input-funcionario");
+const filtroSetor = document.getElementById("filter-setor");
+const badgeCountFuncionarios = document.getElementById("badge-count-funcionarios");
+
+let listaFuncionarios = [];
+
 document.addEventListener("DOMContentLoaded", async () => {
   await carregarEquipamentosDisponiveis();
   await exibirFuncionarios();
+
+  buscaFuncionario.addEventListener("input", aplicarFiltrosFuncionarios);
+  filtroSetor.addEventListener("change", aplicarFiltrosFuncionarios);
 });
 
 async function fetchJSON(url, options) {
@@ -20,7 +29,6 @@ async function carregarEquipamentosDisponiveis(permitirEquipamentoId = null) {
 
   selectEquipamento.innerHTML = `<option value="">Selecione um equipamento</option>`;
 
-  // disponíveis + (se estiver editando) o equipamento atual do funcionário
   equipamentos
     .filter((e) => e.status === "Disponível" || e.id === permitirEquipamentoId)
     .forEach((e) => {
@@ -30,7 +38,35 @@ async function carregarEquipamentosDisponiveis(permitirEquipamentoId = null) {
 }
 
 async function exibirFuncionarios() {
-  const funcionarios = await fetchJSON("/usuarios");
+  listaFuncionarios = await fetchJSON("/usuarios");
+
+  atualizarBadgeFuncionarios(listaFuncionarios.length);
+  renderizarFuncionarios(listaFuncionarios);
+}
+
+function atualizarBadgeFuncionarios(total) {
+  if (!badgeCountFuncionarios) return;
+  badgeCountFuncionarios.textContent = `${total} funcionário${total !== 1 ? "s" : ""} cadastrado${total !== 1 ? "s" : ""}`;
+}
+
+function aplicarFiltrosFuncionarios() {
+  const termo = buscaFuncionario.value.toLowerCase().trim();
+  const setorSelecionado = filtroSetor.value;
+
+  const filtrados = listaFuncionarios.filter((f) => {
+    const nomeMatch =
+      f.nome.toLowerCase().includes(termo) ||
+      f.id.toLowerCase().includes(termo);
+
+    const setorMatch = setorSelecionado === "" || f.setor === setorSelecionado;
+
+    return nomeMatch && setorMatch;
+  });
+
+  renderizarFuncionarios(filtrados);
+}
+
+function renderizarFuncionarios(funcionarios) {
   tabelaFuncionarios.innerHTML = "";
 
   funcionarios.forEach((f) => {
@@ -48,10 +84,10 @@ async function exibirFuncionarios() {
     `;
   });
 
-  // bind botões
   tabelaFuncionarios.querySelectorAll("button[data-edit]").forEach((btn) => {
     btn.addEventListener("click", () => editarFuncionario(btn.dataset.edit));
   });
+
   tabelaFuncionarios.querySelectorAll("button[data-del]").forEach((btn) => {
     btn.addEventListener("click", () => removerFuncionario(btn.dataset.del));
   });
@@ -65,6 +101,20 @@ formFuncionario.addEventListener("submit", async (e) => {
   const equipamentoId = selectEquipamento.value;
   const editId = editIdInput.value;
 
+  const funcionarios = await fetchJSON("/usuarios");
+  const nomeNormalizado = nome.toLowerCase();
+
+  const funcionarioExiste = funcionarios.some(f =>
+    f.nome.trim().toLowerCase() === nomeNormalizado &&
+    f.setor === setor &&
+    f.id !== editId
+  );
+
+  if (funcionarioExiste) {
+    alert("Já existe um funcionário com esse nome neste setor.");
+    return;
+  }
+
   if (!nome) return alert("Informe o nome!");
   if (!setor) return alert("Selecione o setor!");
   if (!equipamentoId) return alert("Selecione um equipamento!");
@@ -77,7 +127,6 @@ formFuncionario.addEventListener("submit", async (e) => {
         body: JSON.stringify({ nome, setor, equipamentoId }),
       });
     } else {
-      // NÃO envia id: o servidor gera o FUNCxx
       await fetchJSON("/usuarios", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -105,7 +154,6 @@ async function editarFuncionario(id) {
     document.getElementById("setor").value = f.setor;
     editIdInput.value = f.id;
 
-    // permite selecionar o equipamento atual (mesmo em uso)
     await carregarEquipamentosDisponiveis(f.equipamentoId);
     selectEquipamento.value = f.equipamentoId || "";
   } catch (err) {

@@ -9,48 +9,26 @@
       "funcionario": "Luan"
     },
     {
-      "id": "MON01",
-      "nome": "Lenovo",
-      "tipo": "MON",
-      "serial": "4512",
-      "status": "Em uso",
-      "funcionario": "Vivian"
-    },
-    {
-      "id": "PER01",
-      "nome": "Lenovo",
-      "tipo": "PER",
-      "serial": "5555",
-      "status": "Em uso",
-      "funcionario": "Ana"
-    },
-    {
-      "id": "NOT03",
-      "nome": "Macbook",
-      "tipo": "NOT",
-      "serial": "03255",
-      "status": "Disponível"
-    },
-    {
       "id": "NOT04",
       "nome": "Positivo",
       "tipo": "NOT",
       "serial": "1256",
-      "status": "Disponível"
+      "status": "Em uso",
+      "funcionario": "Vivian"
+    },
+    {
+      "id": "NOT06",
+      "nome": "Macbook",
+      "tipo": "NOT",
+      "serial": "44444",
+      "status": "Em uso",
+      "funcionario": "Samuel"
     },
     {
       "id": "MON02",
-      "nome": "Monitor Vst 22",
+      "nome": "Monitor Dell",
       "tipo": "MON",
-      "serial": "vga123",
-      "status": "Em uso",
-      "funcionario": "Arthur Ferreira"
-    },
-    {
-      "id": "NOT05",
-      "nome": "Positivo Lite",
-      "tipo": "NOT",
-      "serial": "12234",
+      "serial": "1224",
       "status": "Disponível"
     }
   ],
@@ -59,7 +37,7 @@
       "id": "FUNC02",
       "nome": "Vivian",
       "setor": "TI",
-      "equipamentoId": "MON01"
+      "equipamentoId": "NOT04"
     },
     {
       "id": "FUNC03",
@@ -71,7 +49,19 @@
       "id": "FUNC04",
       "nome": "Arthur Ferreira",
       "setor": "Financeiro",
-      "equipamentoId": "MON02"
+      "equipamentoId": null
+    },
+    {
+      "id": "FUNC05",
+      "nome": "Ana Costela",
+      "setor": "TI",
+      "equipamentoId": null
+    },
+    {
+      "id": "FUNC06",
+      "nome": "Samuel",
+      "setor": "RH",
+      "equipamentoId": "NOT06"
     }
   ]
 }

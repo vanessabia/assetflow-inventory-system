@@ -1,5 +1,6 @@
 const form = document.getElementById('form-equipamento');
 const tabela = document.getElementById('lista-equipamentos');
+const badgeCount = document.getElementById('badge-count');
 
 document.addEventListener('DOMContentLoaded', exibirEquipamentos);
 
@@ -24,6 +25,8 @@ async function exibirEquipamentos() {
     const res = await fetch('/equipamentos');
     const equipamentos = await res.json();
 
+    atualizarBadgeCount(equipamentos.length);
+
     tabela.innerHTML = '';
 
     equipamentos.forEach(item => {
@@ -35,8 +38,8 @@ async function exibirEquipamentos() {
             <td>${item.tipo}</td>
             <td>${item.serial}</td>
             <td>
-            <span class="status ${item.status === 'Disponível' ? 'disponivel' : item.status === 'Em uso' ? 'emuso' : 'manutencao'}">
-                ${item.status}
+                <span class="status ${item.status === 'Disponível' ? 'disponivel' : item.status === 'Em uso' ? 'emuso' : 'manutencao'}">
+                    ${item.status}
                 </span>
             </td>
             <td>
@@ -45,6 +48,12 @@ async function exibirEquipamentos() {
         `;
         tabela.appendChild(linha);
     });
+}
+
+function atualizarBadgeCount(total) {
+    if (!badgeCount) return;
+
+    badgeCount.textContent = `${total} ativo${total !== 1 ? 's' : ''} cadastrado${total !== 1 ? 's' : ''}`;
 }
 
 async function removerEquipamento(id) {
