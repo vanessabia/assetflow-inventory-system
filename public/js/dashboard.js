@@ -46,8 +46,8 @@ function renderizarGrafico(disponiveis, emUso, manutencao) {
       datasets: [{
         data: [disponiveis, emUso, manutencao],
         backgroundColor: [
-          "#ddf661",
-          "#A1937E",
+          "#cab390",
+          "#94846d",
           "#D8D0C4"
         ],
         borderWidth: 0
@@ -55,6 +55,7 @@ function renderizarGrafico(disponiveis, emUso, manutencao) {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: "bottom"
