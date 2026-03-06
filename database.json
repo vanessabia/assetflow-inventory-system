@@ -17,18 +17,12 @@
       "funcionario": "Vivian"
     },
     {
-      "id": "NOT03",
-      "nome": "Acer",
-      "tipo": "NOT",
-      "serial": "123654",
-      "status": "Disponível"
-    },
-    {
-      "id": "NOT03",
-      "nome": "Macbook",
-      "tipo": "NOT",
-      "serial": "03255",
-      "status": "Disponível"
+      "id": "PER01",
+      "nome": "Lenovo",
+      "tipo": "PER",
+      "serial": "5555",
+      "status": "Em uso",
+      "funcionario": "Samuel"
     }
   ],
   "usuarios": [
@@ -43,6 +37,12 @@
       "nome": "Luan",
       "setor": "Financeiro",
       "equipamentoId": "NOT02"
+    },
+    {
+      "id": "FUNC04",
+      "nome": "Samuel",
+      "setor": "TI",
+      "equipamentoId": "PER01"
     }
   ]
 }

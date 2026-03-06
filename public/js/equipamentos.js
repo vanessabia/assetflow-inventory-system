@@ -34,9 +34,13 @@ async function exibirEquipamentos() {
             <td>${item.nome}</td>
             <td>${item.tipo}</td>
             <td>${item.serial}</td>
-            <td>${item.status}</td>
             <td>
-                <button onclick="removerEquipamento('${item.id}')">Remover</button>
+            <span class="status ${item.status === 'Disponível' ? 'disponivel' : item.status === 'Em uso' ? 'emuso' : 'manutencao'}">
+                ${item.status}
+                </span>
+            </td>
+            <td>
+                <button class="btn-delete" onclick="removerEquipamento('${item.id}')">Remover</button>
             </td>
         `;
         tabela.appendChild(linha);

@@ -16,60 +16,70 @@
 
 <body>
 
-  <div class="dashboard">
+  <div class="layout">
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
       <div class="logo">
-        <img src="../img/logo.png" alt="AssetFlow" class="logo">
+        <img src="../img/logo.png" alt="AssetFlow">
       </div>
 
       <nav class="menu">
-        <a href="/html/equipamentos.html">📦 Equipamentos</a>
-        <div class="divider"></div>
-        <a href="/html/funcionarios.html">👤 Funcionários</a>
+        <button onclick="abrirPagina('../html/dashboard.html')">
+          📊 Dashboard
+        </button>
+
+        <button onclick="abrirPagina('../html/equipamentos.html')">
+          📦 Equipamentos
+        </button>
+
+        <button onclick="abrirPagina('../html/funcionarios.html')">
+          👤 Funcionários
+        </button>
       </nav>
 
     </aside>
 
-
-    <!-- CONTEÚDO -->
-    <div class="main">
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main">
 
       <!-- TOPBAR -->
       <header class="topbar">
-        <h1>Dashboard</h1>
+        <h1 id="page-title">Dashboard</h1>
       </header>
 
+      <!-- CONTEÚDO DINÂMICO -->
+      <section id="content">
 
-      <!-- CONTENT -->
-      <section class="content">
-
-        <div class="cards">
-
-          <div class="card">
-            <h3>Equipamentos</h3>
-            <p>Gerenciar equipamentos cadastrados</p>
-          </div>
-
-          <div class="card">
-            <h3>Funcionários</h3>
-            <p>Gerenciar funcionários cadastrados</p>
-          </div>
-
-          <div class="card">
-            <h3>Sistema</h3>
-            <p>Controle de ativos da empresa</p>
-          </div>
-
-        </div>
+        <iframe id="frame-conteudo" src="dashboard.html" frameborder="0">
+        </iframe>
 
       </section>
 
-    </div>
+    </main>
 
   </div>
+
+  <script>
+    function abrirPagina(pagina) {
+
+      document.getElementById("frame-conteudo").src = pagina;
+
+      const titulo = {
+        "../html/dashboard.html": "Visão Geral",
+        "../html/equipamentos.html": "Inventário de Ativos",
+        "../html/funcionarios.html": "Responsáveis pelos Ativos"
+      };
+
+      document.getElementById("page-title").innerText = titulo[pagina];
+
+    }
+  </script>
+
+  <script src="../js/dashboard.js"></script>
+
+</body>
 
 </body>
 
