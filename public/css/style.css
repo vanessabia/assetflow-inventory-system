@@ -571,7 +571,20 @@ font-size:16px;
   color:#A1937E;
   font-size:18px;
 }
+/* TAMANHO DO GRÁFICO */
 
+.chart-wrapper{
+  width:100%;
+  max-width:420px;
+  height:300px;
+  margin:20px auto;
+  position:relative;
+}
+
+#grafico-equipamentos{
+  width:100% !important;
+  height:100% !important;
+}
 
 /* responsivo */
 @media (max-width: 1100px){

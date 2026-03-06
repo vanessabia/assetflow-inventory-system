@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <title>AssetFlow • Dashboard</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>AssetFlow • Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
 
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-  <div class="page">
+    <div class="page">
 
-    <header class="page-header">
-      <div class="module-card">
-        <div class="module-info">
-          <h1>Dashboard</h1>
-          <p>Visualize os dados principais do inventário e acompanhe os ativos em tempo real.</p>
-        </div>
-      </div>
-    </header>
+        <header class="page-header">
+            <div class="module-card">
+                <div class="module-info">
+                    <h1>Dashboard</h1>
+                    <p>Visualize os dados principais do inventário e acompanhe os ativos em tempo real.</p>
+                </div>
+            </div>
+        </header>
 
-    <section class="stats-grid">
-      <div class="stat-card">
-        <span>Total de Equipamentos</span>
-        <strong id="total-equipamentos">0</strong>
-      </div>
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span>Total de Equipamentos</span>
+                <strong id="total-equipamentos">0</strong>
+            </div>
 
-      <div class="stat-card">
-        <span>Disponíveis</span>
-        <strong id="total-disponiveis">0</strong>
-      </div>
+            <div class="stat-card">
+                <span>Disponíveis</span>
+                <strong id="total-disponiveis">0</strong>
+            </div>
 
-      <div class="stat-card">
-        <span>Em uso</span>
-        <strong id="total-emuso">0</strong>
-      </div>
+            <div class="stat-card">
+                <span>Em uso</span>
+                <strong id="total-emuso">0</strong>
+            </div>
 
-      <div class="stat-card">
-        <span>Funcionários</span>
-        <strong id="total-funcionarios">0</strong>
-      </div>
-    </section>
+            <div class="stat-card">
+                <span>Funcionários</span>
+                <strong id="total-funcionarios">0</strong>
+            </div>
+        </section>
 
-    <section class="dashboard-grid">
-      <div class="card">
-        <h2>Status dos Equipamentos</h2>
-        <canvas id="grafico-equipamentos"></canvas>
-      </div>
+        <section class="dashboard-grid">
+            <div class="card">
+                <h2>Status dos Equipamentos</h2>
+                <div class="chart-wrapper">
+                    <canvas id="grafico-equipamentos"></canvas>
+                </div>
+            </div>
 
-      <div class="card">
-        <h2>Resumo do Sistema</h2>
-        <div class="dashboard-list">
-          <div class="dashboard-list-item">
-            <span>Equipamentos em manutenção</span>
-            <strong id="total-manutencao">0</strong>
-          </div>
+            <div class="card">
+                <h2>Resumo do Sistema</h2>
+                <div class="dashboard-list">
+                    <div class="dashboard-list-item">
+                        <span>Equipamentos em manutenção</span>
+                        <strong id="total-manutencao">0</strong>
+                    </div>
 
-          <div class="dashboard-list-item">
-            <span>Total de ativos cadastrados</span>
-            <strong id="total-ativos-resumo">0</strong>
-          </div>
+                    <div class="dashboard-list-item">
+                        <span>Total de ativos cadastrados</span>
+                        <strong id="total-ativos-resumo">0</strong>
+                    </div>
 
-          <div class="dashboard-list-item">
-            <span>Funcionários com equipamento</span>
-            <strong id="funcionarios-com-equipamento">0</strong>
-          </div>
-        </div>
-      </div>
-    </section>
+                    <div class="dashboard-list-item">
+                        <span>Funcionários com equipamento</span>
+                        <strong id="funcionarios-com-equipamento">0</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  </div>
+    </div>
 
-  <script src="../js/dashboard.js"></script>
+    <script src="../js/dashboard.js"></script>
 </body>
+
 </html>
