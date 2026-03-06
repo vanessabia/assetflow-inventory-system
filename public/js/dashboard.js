@@ -1,57 +1,65 @@
-const menuItems = document.querySelectorAll(".menu-item")
-const title = document.getElementById("page-title")
-const content = document.getElementById("content")
+let graficoEquipamentos;
 
-menuItems.forEach(item => {
+document.addEventListener("DOMContentLoaded", carregarDashboard);
 
-  item.addEventListener("click", () => {
+async function carregarDashboard() {
+  try {
+    const [equipamentos, funcionarios] = await Promise.all([
+      fetch("/equipamentos").then(res => res.json()),
+      fetch("/usuarios").then(res => res.json())
+    ]);
 
-    menuItems.forEach(i => i.classList.remove("active"))
-    item.classList.add("active")
+    const totalEquipamentos = equipamentos.length;
+    const totalFuncionarios = funcionarios.length;
 
-    const page = item.dataset.page
+    const totalDisponiveis = equipamentos.filter(e => e.status === "Disponível").length;
+    const totalEmUso = equipamentos.filter(e => e.status === "Em uso").length;
+    const totalManutencao = equipamentos.filter(e => e.status === "Manutenção").length;
 
-    if(page === "equipamentos"){
-      title.textContent = "Equipamentos"
+    const funcionariosComEquipamento = funcionarios.filter(f => f.equipamentoId).length;
 
-      content.innerHTML = `
-        <h2>Lista de Equipamentos</h2>
-        <p>Aqui ficará a tabela de equipamentos.</p>
-      `
+    document.getElementById("total-equipamentos").textContent = totalEquipamentos;
+    document.getElementById("total-disponiveis").textContent = totalDisponiveis;
+    document.getElementById("total-emuso").textContent = totalEmUso;
+    document.getElementById("total-funcionarios").textContent = totalFuncionarios;
+    document.getElementById("total-manutencao").textContent = totalManutencao;
+    document.getElementById("total-ativos-resumo").textContent = totalEquipamentos;
+    document.getElementById("funcionarios-com-equipamento").textContent = funcionariosComEquipamento;
+
+    renderizarGrafico(totalDisponiveis, totalEmUso, totalManutencao);
+  } catch (error) {
+    console.error("Erro ao carregar dashboard:", error);
+  }
+}
+
+function renderizarGrafico(disponiveis, emUso, manutencao) {
+  const ctx = document.getElementById("grafico-equipamentos");
+
+  if (graficoEquipamentos) {
+    graficoEquipamentos.destroy();
+  }
+
+  graficoEquipamentos = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Disponíveis", "Em uso", "Manutenção"],
+      datasets: [{
+        data: [disponiveis, emUso, manutencao],
+        backgroundColor: [
+          "#ddf661",
+          "#A1937E",
+          "#D8D0C4"
+        ],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom"
+        }
+      }
     }
-
-    if(page === "funcionarios"){
-      title.textContent = "Funcionários"
-
-      content.innerHTML = `
-        <h2>Lista de Funcionários</h2>
-        <p>Aqui ficará a tabela de funcionários.</p>
-      `
-    }
-
-    if(page === "dashboard"){
-      title.textContent = "Dashboard"
-
-      content.innerHTML = `
-        <div class="cards">
-          <div class="card">
-            <h3>Equipamentos</h3>
-            <p>Total cadastrados</p>
-          </div>
-
-          <div class="card">
-            <h3>Funcionários</h3>
-            <p>Total cadastrados</p>
-          </div>
-
-          <div class="card">
-            <h3>Em uso</h3>
-            <p>Equipamentos ativos</p>
-          </div>
-        </div>
-      `
-    }
-
-  })
-
-})
+  });
+}
