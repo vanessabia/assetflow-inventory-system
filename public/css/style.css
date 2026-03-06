@@ -1,48 +1,117 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
-h1, h2 {
-    margin-top: 40px;
+
+body{
+background:#ffffff;
+color:#333;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+
+
+/* LAYOUT */
+
+.dashboard{
+display:flex;
+height:100vh;
 }
-th, td {
-    border: 1px solid #999;
-    padding: 8px;
-    text-align: left;
+
+
+/* SIDEBAR */
+
+.sidebar{
+width:240px;
+background:#A1937E;
+color:white;
+padding:25px 20px;
+display:flex;
+flex-direction:column;
+gap:30px;
 }
-th {
-    background-color: #eee;
+
+.logo{
+  width: 200px;
+  display: block;
+  margin-bottom: 20px;
 }
-.status-badge {
-    padding: 2px 6px;
-    border-radius: 4px;
-    background-color: #cce5ff;
+
+.menu{
+display:flex;
+flex-direction:column;
+gap:10px;
 }
-form {
-    margin-top: 10px;
+
+.menu a{
+text-decoration:none;
+color:white;
+padding:10px;
+border-radius:8px;
+transition:0.2s;
 }
-input, select, button {
-    padding: 5px;
-    margin: 2px 0;
+
+.menu a:hover{
+background:#B8A890;
 }
-button {
-    cursor: pointer;
+
+
+/* MAIN */
+
+.main{
+flex:1;
+display:flex;
+flex-direction:column;
 }
-.btn-edit {
-    background-color: #ffc107;
-    border: none;
-    color: #fff;
-    padding: 5px 8px;
-    margin-right: 4px;
+
+
+/* TOPBAR */
+
+.topbar{
+height:70px;
+background:white;
+display:flex;
+align-items:center;
+padding:0 30px;
+
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
 }
-.btn-delete {
-    background-color: #dc3545;
-    border: none;
-    color: #fff;
-    padding: 5px 8px;
+
+
+/* CONTENT */
+
+.content{
+padding:30px;
+background:#f7f7f7;
+flex:1;
+}
+
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+
+box-shadow:0 6px 18px rgba(0,0,0,0.08);
+
+transition:0.2s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#A1937E;
 }

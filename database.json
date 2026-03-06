@@ -21,8 +21,7 @@
       "nome": "Acer",
       "tipo": "NOT",
       "serial": "123654",
-      "status": "Em uso",
-      "funcionario": "Ana"
+      "status": "Disponível"
     },
     {
       "id": "NOT03",
@@ -33,12 +32,6 @@
     }
   ],
   "usuarios": [
-    {
-      "id": "FUNC01",
-      "nome": "Ana",
-      "setor": "RH",
-      "equipamentoId": "NOT03"
-    },
     {
       "id": "FUNC02",
       "nome": "Vivian",
