@@ -1,64 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <title>AssetFlow</title>
+    <title>AssetFlow • Equipamentos</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-    <div class="search-section" style="margin-bottom: 20px; background: #eee; padding: 15px; border-radius: 8px;">
-    <h3>🔍 Pesquisar Inventário</h3>
-    <input type="text" id="search-input" placeholder="Digite nome ou código..." style="width: 70%; padding: 8px;">
-    <select id="filter-status-busca" style="padding: 8px;">
-        <option value="">Todos</option>
-        <option value="Disponível">Disponível</option>
-        <option value="Em uso">Em uso</option>
-        <option value="Manutenção">Manutenção</option>
-    </select>
-</div>
-        <h2>📦 Cadastro de Equipamentos</h2>
-        
-        <form id="form-equipamento">
-            <div class="form-group">
-                <label>Nome do Equipamento:</label>
-                <input type="text" id="nome" placeholder="Ex: MacBook Pro" required>
-            </div>
 
-            <div class="form-group">
-                <label>Tipo:</label>
-                <select id="tipo" required>
-                    <option value="NOT">Notebook</option>
-                    <option value="MON">Monitor</option>
-                    <option value="PER">Periférico</option>
+<body>
+    <div class="page">
+
+        <div class="page-top">
+            <header class="page-header">
+
+                <div class="module-card">
+
+                    <div class="module-info">
+                        <h1>Equipamentos</h1>
+                        <p>Gerencie os ativos cadastrados e acompanhe o inventário.</p>
+
+                        <div class="badge-count" id="badge-count">
+                            0 ativos cadastrados
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+            <div class="search-section">
+                <div class="search-box">
+                    <span class="search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="7" stroke="#999" stroke-width="2" />
+                            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="#999" stroke-width="2" />
+                        </svg>
+                    </span>
+                    <input type="text" id="search-input" placeholder="Buscar por nome ou código...">
+                </div>
+
+                <select id="filter-status-busca" class="search-select">
+                    <option value="">Todos</option>
+                    <option value="Disponível">Disponível</option>
+                    <option value="Em uso">Em uso</option>
+                    <option value="Manutenção">Manutenção</option>
                 </select>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label>Número de Série:</label>
-                <input type="text" id="serial" placeholder="Ex: SN12345" required>
+        <div class="grid">
+            <!-- CARD FORM -->
+            <div class="card">
+                <h2>Cadastrar Equipamento</h2>
+
+                <form id="form-equipamento">
+                    <div class="form-group">
+                        <label>Nome do Equipamento</label>
+                        <input type="text" id="nome" placeholder="Ex: MacBook Pro" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select id="tipo">
+                            <option value="NOT">Notebook</option>
+                            <option value="MON">Monitor</option>
+                            <option value="PER">Periférico</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Número de Série</label>
+                        <input type="text" id="serial" placeholder="SN12345">
+                    </div>
+
+                    <button class="btn-primary" type="submit">
+                        Cadastrar Equipamento
+                    </button>
+                </form>
             </div>
 
-            <button type="submit">Cadastrar Equipamento</button>
-        </form>
+            <!-- CARD TABELA -->
+            <div class="card">
+                <h2>Inventário</h2>
 
-        <hr>
-
-        <h2>📋 Inventário Registrado</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nome</th>
-                    <th>Tipo</th>
-                    <th>Serial</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="lista-equipamentos">
-                </tbody>
-        </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Serial</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-equipamentos"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <script src="../js/equipamentos.js"></script>
 </body>
+
 </html>

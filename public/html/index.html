@@ -1,33 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+
   <title>AssetFlow</title>
+
   <link rel="stylesheet" href="../css/style.css">
-  <style>
-    .menu { max-width: 720px; margin: 40px auto; padding: 20px; }
-    .menu h1 { margin-bottom: 12px; }
-    .menu p { margin-bottom: 18px; }
-    .menu .links { display: flex; gap: 12px; flex-wrap: wrap; }
-    .menu a {
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 10px;
-      text-decoration: none;
-      border: 1px solid rgba(0,0,0,.12);
-      background: #fff;
-    }
-  </style>
 </head>
+
 <body>
-  <div class="menu">
-    <h1>AssetFlow</h1>
-    <p>Escolha um módulo:</p>
-    <div class="links">
-      <a href="/html/equipamentos.html">📦 Equipamentos</a>
-      <a href="/html/funcionarios.html">👤 Funcionários</a>
-    </div>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <!-- TOPO -->
+      <div class="sidebar-top">
+        <div class="logo">
+          <img src="../img/logo.png" alt="AssetFlow">
+        </div>
+
+        <div class="sidebar-divider"></div>
+      </div>
+
+      <!-- MENU -->
+      <nav class="menu">
+        <button onclick="abrirPagina('../html/dashboard.html', this)">
+          <svg class="menu-icon" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+          </svg>
+          Dashboard
+        </button>
+
+        <button onclick="abrirPagina('../html/equipamentos.html', this)">
+          <svg class="menu-icon" viewBox="0 0 24 24">
+            <path d="M3 7h18v10H3z" />
+            <path d="M8 7V5h8v2" />
+          </svg>
+          Equipamentos
+        </button>
+
+        <button onclick="abrirPagina('../html/funcionarios.html', this)">
+          <svg class="menu-icon" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+          </svg>
+          Funcionários
+        </button>
+      </nav>
+
+      <!-- RODAPÉ -->
+      <div class="sidebar-footer">
+        <div class="footer-user">
+          <div class="footer-avatar">A</div>
+          <div class="footer-user-info">
+            <strong>Administrador</strong>
+            <span>AssetFlow v1.0</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <h1 id="page-title">Dashboard</h1>
+      </header>
+
+      <!-- CONTEÚDO DINÂMICO -->
+      <section id="content">
+
+        <iframe id="frame-conteudo" src="dashboard.html" frameborder="0">
+        </iframe>
+
+      </section>
+
+    </main>
+
   </div>
+
+  <script>
+    function abrirPagina(pagina, botao) {
+      document.getElementById("frame-conteudo").src = pagina;
+
+      const titulos = {
+        "../html/dashboard.html": "Visão Geral",
+        "../html/equipamentos.html": "Inventário de Ativos",
+        "../html/funcionarios.html": "Responsáveis pelos Ativos",
+      };
+
+      document.getElementById("page-title").innerText = titulos[pagina] || "AssetFlow";
+
+      document.querySelectorAll(".menu button").forEach(btn => {
+        btn.classList.remove("active");
+      });
+
+      botao.classList.add("active");
+    }
+
+    window.onload = function () {
+      const primeiroBotao = document.querySelector(".menu button");
+      abrirPagina("dashboard.html", primeiroBotao);
+    }
+  </script>
+
+  <script src="../js/dashboard.js"></script>
+
 </body>
+
+</body>
+
 </html>
