@@ -608,3 +608,80 @@ font-size:16px;
     grid-template-columns:1fr;
   }
 }
+
+/* ADICIONANDO BUSCA */
+.busca-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+#busca {
+    flex-grow: 1;
+    min-width: 350px;
+    
+    /* O SEGREDO ESTÁ AQUI: */
+    /* 0 (cima), 14px (direita), 0 (baixo), 45px (esquerda) */
+    padding: 0 14px 0 45px; 
+    
+    height: 42px; /* Garante uma altura boa para centralizar o texto */
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    outline: none;
+    background: #fff;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+/* --- CSS DO MODAL DE STATUS --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.status-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.opt-status {
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.opt-status:hover {
+    transform: scale(1.02);
+}
+
+.btn-fechar-modal {
+    background: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #666;
+}

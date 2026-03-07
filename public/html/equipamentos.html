@@ -36,10 +36,10 @@
                             <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="#999" stroke-width="2" />
                         </svg>
                     </span>
-                    <input type="text" id="search-input" placeholder="Buscar por nome ou código...">
+                    <input type="text" id="busca" placeholder="Buscar por código ou nome do funcionário...">
                 </div>
 
-                <select id="filter-status-busca" class="search-select">
+                <select id="filtro-status" class="search-select">
                     <option value="">Todos</option>
                     <option value="Disponível">Disponível</option>
                     <option value="Em uso">Em uso</option>
@@ -49,7 +49,6 @@
         </div>
 
         <div class="grid">
-            <!-- CARD FORM -->
             <div class="card">
                 <h2>Cadastrar Equipamento</h2>
 
@@ -79,7 +78,6 @@
                 </form>
             </div>
 
-            <!-- CARD TABELA -->
             <div class="card">
                 <h2>Inventário</h2>
 
@@ -91,7 +89,8 @@
                             <th>Tipo</th>
                             <th>Serial</th>
                             <th>Status</th>
-                            <th></th>
+                            <th>Funcionário</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody id="lista-equipamentos"></tbody>
@@ -100,7 +99,21 @@
         </div>
     </div>
 
+    <div id="modal-status" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Alterar Status do Ativo</h3>
+            <p>Selecione a nova condição do equipamento:</p>
+            <div class="status-options">
+                <button class="opt-status disponivel" onclick="confirmarTrocaStatus('Disponível')">Disponível</button>
+                <button class="opt-status emuso" onclick="confirmarTrocaStatus('Em uso')">Em uso</button>
+                <button class="opt-status manutencao" onclick="confirmarTrocaStatus('Manutenção')">Manutenção</button>
+            </div>
+            <button class="btn-fechar-modal" onclick="fecharModal()">Cancelar</button>
+        </div>
+    </div>
+
     <script src="../js/equipamentos.js"></script>
+    <script src="../js/filtros.js"></script>
 </body>
 
 </html>

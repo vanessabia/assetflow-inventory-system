@@ -30,6 +30,14 @@
       "tipo": "MON",
       "serial": "1224",
       "status": "Disponível"
+    },
+    {
+      "id": "PER01",
+      "nome": "Mouse Razer",
+      "tipo": "PER",
+      "serial": "3398",
+      "status": "Em uso",
+      "funcionario": "Khauê"
     }
   ],
   "usuarios": [
@@ -62,6 +70,12 @@
       "nome": "Samuel",
       "setor": "RH",
       "equipamentoId": "NOT06"
+    },
+    {
+      "id": "FUNC07",
+      "nome": "Khauê",
+      "setor": "TI",
+      "equipamentoId": "PER01"
     }
   ]
 }
