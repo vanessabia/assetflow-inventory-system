@@ -39,10 +39,11 @@ O sistema utiliza um servidor Node.js com Express para gerenciamento de dados e 
 
 ## 🚧 Status do Projeto
 
-📌 Fase atual: Planejamento e estruturação inicial
-📌 Desenvolvimento iniciado do zero
-📌 Organização via GitHub com branches por funcionalidade
-📌 Metodologia baseada em divisão modular de responsabilidades
+📌 Fase atual: Desenvolvimento funcional dos módulos principais concluído  
+📌 Sistema estruturado com front-end e servidor Node.js com Express  
+📌 Persistência de dados implementada em arquivo JSON  
+📌 Organização do código realizada com GitHub, branches e Pull Requests  
+📌 Projeto em fase final de testes, documentação e preparação para apresentação
 
 ---
 
@@ -105,26 +106,32 @@ O sistema estará disponível com as seguintes funcionalidades:
 ## 🏗 Estrutura de Pastas
 
 ```bash
-AssetFlow/
+assetflow-inventory-system/
 │
 ├── server.js
 ├── database.json
 ├── package.json
+├── package-lock.json
+├── .gitignore
 │
 ├── public/
 │   ├── html/
 │   │   ├── index.html
 │   │   ├── equipamentos.html
-│   │   └── funcionarios.html
+│   │   ├── funcionarios.html
+│   │   └── dashboard.html
 │   │
 │   ├── css/
 │   │   └── style.css
 │   │
-│   └── js/
-│       ├── equipamentos.js
-│       ├── funcionarios.js
-│       ├── filtros.js
-│       └── dashboard.js
+│   ├── js/
+│   │   ├── equipamentos.js
+│   │   ├── funcionarios.js
+│   │   ├── filtros.js
+│   │   └── dashboard.js
+│   │
+│   └── img/
+│       └── (imagens utilizadas na interface)
 │
 └── README.md
 ```
@@ -135,8 +142,8 @@ AssetFlow/
 
 * `server.js` → Servidor Node.js com Express responsável pela API e gerenciamento dos dados
 * `database.json` → Arquivo utilizado para persistência dos dados da aplicação
-* `equipamentos.js` → Cadastro, geração de código, edição e listagem
-* `funcionarios.js` → Cadastro e atribuição de equipamentos
+* `equipamentos.js` → Cadastro, edição e listagem de equipamentos
+* `funcionarios.js` → Cadastro de funcionários e atribuição de equipamentos
 * `filtros.js` → Busca e filtros dinâmicos
 * `dashboard.js` → Estatísticas e integração com Chart.js
 
@@ -157,7 +164,7 @@ feature-* → main
 * `feature-equipamentos`
 * `feature-funcionarios`
 * `feature-filtros`
-* `feature-dashboard`
+* `feature-filtros-final`
 
 Cada integrante trabalha em sua própria branch e realiza Pull Request para `main`.
 
@@ -180,8 +187,8 @@ Cada integrante trabalha em sua própria branch e realiza Pull Request para `mai
 
 * Controle de inventário
 * Persistência de dados em arquivo JSON via servidor Node.js
+* Cadastro e atribuição de equipamentos
 * Dashboard estatístico
-* Interface responsiva
 * Organização modular do código
 
 ### Não inclui:
@@ -196,10 +203,10 @@ Cada integrante trabalha em sua própria branch e realiza Pull Request para `mai
 ## 👥 Organização da Equipe
 
 * Front-end & Layout: **Samuel Marcos**
-* Módulo de Equipamentos: **Arthur**
+* Módulo de Equipamentos: **Arthur Ferreira**
 * Módulo de Funcionários: **Vanessa Beatriz**
 * Busca e Filtros: **Khauê Braga**
-* Dashboard & Estatísticas: **Guilherme**
+* Dashboard & Estatísticas: **Francisco Guilherme**
 
 ---
 
